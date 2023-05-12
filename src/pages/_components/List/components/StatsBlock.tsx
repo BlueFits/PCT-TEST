@@ -20,6 +20,7 @@ const StatsBlock: React.FC<IStatsBlock> = ({ name, affected_url, code, setOveral
 
     useEffect(() => {
         const scan = async () => {
+            console.log("!!!", affected_url, code);
             setIsLoading(true);
             const resResult: { data: IScan } = await api.scanActivity({
                 affected_url,

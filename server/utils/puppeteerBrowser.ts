@@ -27,7 +27,6 @@ class PuppeteerBrowser {
                 "--fast-start",
                 "--disable-extensions",
                 "--no-sandbox",
-                "--single-process",
                 "--no-zygote",
                 "--disable-setuid-sandbox",
             ],

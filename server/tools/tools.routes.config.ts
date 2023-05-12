@@ -11,17 +11,6 @@ class ToolsRoutes extends CommonRoutesConfig {
     }
 
     configureRoute(): void {
-
-        this.router.route("/refresh_token")
-            .post(toolsController.refresh_token)
-
-        this.router.route("/get_live")
-            .get(
-                query("token").exists(),
-                validationMiddleware.verifyFieldErrors,
-                toolsController.getLive
-            )
-
         this.router.route("/scan")
             .post(
                 body("affected_url").exists().isString(),

@@ -1,21 +1,34 @@
 import { useState, useEffect } from "react";
 import ListDisplay from './_components/List/List';
 import api from "../services/modules/activities/api";
-import { IActivity, IModifiedActivity, ITargetApi_getLive_client } from "../../types/common.types";
+import { IActivity, IModifiedActivity, ITargetApi_getLive, ITargetApi_getLive_client } from "../../types/common.types";
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography } from "@mui/material";
 
 export default function Home() {
-	const [activities, setActivities] = useState([]);
+	const [activities, setActivities] = useState<Array<IModifiedActivity> | []>([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchAct = async () => {
-			const activitiesResponse: ITargetApi_getLive_client = await api.getActivities();
-			console.log("activities", activitiesResponse);
-			setActivities(activitiesResponse.data);
+			const dummyData: Array<IModifiedActivity> = [{
+				affectedURL: "https://www.bmo.com/en-ca/main/personal/",
+				experiences: [{
+					code: "<script>console.log('a')</script>",
+					name: "experience A",
+				}],
+				id: 12,
+				modifiedAt: "asd",
+				name: "Test Story",
+				priority: 1,
+				state: "1",
+				thirdPartyId: "123",
+				type: "xt",
+				workspace: "asd",
+			}];
+
+			setActivities(dummyData);
 			setIsLoading(false);
-			// console.log("!!!", activitiesResponse);
 		};
 		fetchAct();
 	}, []);
