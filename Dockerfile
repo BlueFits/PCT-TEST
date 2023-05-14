@@ -1,9 +1,5 @@
-@@ -1,11 +1,50 @@
-FROM ghcr.io/puppeteer/puppeteer:19.8.2
 FROM node:slim AS build
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 WORKDIR /usr/src/app
 
 COPY package.json .
@@ -13,9 +9,6 @@ RUN npm install
 COPY . .
 
 RUN npm run build
-
-# Bundle typescript here
-# RUN ./node_modules/typescript/bin/tsc -p ./tsconfig.server.json
 
 # Clean up node_modules to not include dev dependencies.
 RUN rm -rf ./node_modules
@@ -40,10 +33,6 @@ RUN apt-get update && apt-get install gnupg wget -y && \
 
 WORKDIR /usr/src/app
 
-COPY package*.json /usr/src/app
-RUN npm ci
-COPY . /usr/src/app
-CMD [ "node", "dist/server/server.js" ]
 COPY package.json .
 
 RUN npm install
