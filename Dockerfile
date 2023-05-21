@@ -40,7 +40,6 @@ RUN npm install
 
 # This will copy all files in our root to the working directory in the container
 # COPY --from=build /usr/src/app/dist dist
-# COPY --from=build /usr/src/app/.next .next
 COPY --from=build /usr/src/app .
 
 # Start script to run the server
