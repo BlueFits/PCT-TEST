@@ -44,7 +44,7 @@ const StatsBlock: React.FC<IStatsBlock> = ({ name, affected_url, code, setOveral
     }, []);
 
     return (
-        <div className='flex items-start w-full pt-5 items-center justify-start'>
+        <div className='flex items-center w-full pt-5 justify-start'>
             <div className='h-full flex items-start justify-center'>
                 <Typography variant='h6'>
                     {name}

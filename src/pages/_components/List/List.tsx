@@ -47,7 +47,7 @@ const ListDisplay: React.FC<IListDisplay> = ({
         <li>
             <div className={`flex items-center justify-between py-3 px-2 ${showMoreInfo ? "" : "border-b-2"}`}>
                 {/* Type */}
-                <div className='w-10 border-2 w-20 flex justify-center'>
+                <div className='w-20 border-2 flex justify-center'>
                     <Typography>
                         {type}
                     </Typography>
