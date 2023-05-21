@@ -20,7 +20,8 @@ RUN JOBS=MAX npm i --production
 
 FROM node:slim
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 
 # Install Google Chrome Stable and fonts
 # Note: this installs the necessary libs to make the browser work with Puppeteer.
@@ -38,9 +39,9 @@ COPY package.json .
 RUN npm install
 
 # This will copy all files in our root to the working directory in the container
-COPY --from=build /usr/src/app/dist dist
-COPY --from=build /usr/src/app/.next .next
-COPY package.json package.json
+# COPY --from=build /usr/src/app/dist dist
+# COPY --from=build /usr/src/app/.next .next
+COPY --from=build /usr/src/app .
 
 # Start script to run the server
 EXPOSE 3000

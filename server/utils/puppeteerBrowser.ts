@@ -14,6 +14,9 @@ class PuppeteerBrowser {
     }
 
     static async build() {
+
+        console.log("puppeteer path prod:", process.env.NODE_ENV === "production", process.env.PUPPETEER_EXECUTABLE_PATH, puppeteer.executablePath());
+
         let browser = await pupeteer.launch({
             executablePath:
                 process.env.NODE_ENV === "production"

@@ -11,6 +11,7 @@ class ToolsController {
         try {
             const affected_url = req.body.affected_url;
             const code = req.body.code;
+            console.log("serverlog:", affected_url, code);
             //Check if acitvity is ok
             const instance = await PuppeteerBrowser.build();
             const $ = cheerio.load(code);
